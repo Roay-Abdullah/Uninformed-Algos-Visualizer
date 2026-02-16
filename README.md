@@ -63,5 +63,3 @@ venv\Scripts\activate             # Windows
   - (2,2) (2,3) (2,4)
   - (4,4) (4,5)
   - (5,7) (6,7) (7,7)
-  *Random edge weights (1–10) are generated for UCS each run.*
-
