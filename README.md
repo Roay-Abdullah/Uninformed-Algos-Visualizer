@@ -1,65 +1,127 @@
-# Uninformed Search Algorithms Visualizer
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - Uninformed Search Visualizer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #ffffff;
+        }
+        h1 { border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+        h2 { border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; margin-top: 24px; }
+        code {
+            background-color: rgba(27, 31, 35, 0.05);
+            border-radius: 3px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            padding: 0.2em 0.4em;
+        }
+        pre {
+            background-color: #f6f8fa;
+            border-radius: 3px;
+            padding: 16px;
+            overflow: auto;
+            line-height: 1.45;
+        }
+        .emoji { font-style: normal; }
+        .footer { margin-top: 50px; font-size: 0.8em; color: #6a737d; text-align: center; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        table, th, td { border: 1px solid #dfe2e5; }
+        th, td { padding: 10px; text-align: left; }
+        th { background-color: #f6f8fa; }
+    </style>
+</head>
+<body>
 
-![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
-![Tkinter](https://img.shields.io/badge/GUI-Tkinter-orange)
+    <h1>Uninformed Search Algorithms Visualizer</h1>
+    <p>A Python-based interactive tool built with <code>Tkinter</code> to visualize how various Uninformed Search strategies navigate a 10x10 grid with obstacles.</p>
 
-Interactive **step-by-step visualizer** of classic uninformed (blind) search algorithms on a grid world, built with **Python** and **Tkinter**.
+    
 
-Perfect for students, educators, and anyone learning artificial intelligence search concepts.
+    <h2>🚀 Features</h2>
+    <ul>
+        <li><strong>Real-time Animation:</strong> Watch the frontier expand and nodes transition from "waiting" to "explored."</li>
+        <li><strong>Algorithm Suite:</strong> Includes BFS, DFS, UCS, DLS, IDDFS, and Bidirectional Search.</li>
+        <li><strong>Weighted Pathfinding:</strong> Uniform Cost Search (UCS) utilizes randomized weights displayed directly on the grid.</li>
+        <li><strong>Interactive Controls:</strong> Toggle algorithms, clear paths, and view expansion order via a sidebar.</li>
+    </ul>
 
+    <h2>🛠️ Prerequisites & Installation</h2>
+    
+    <h3>1. System Requirements</h3>
+    <p>This project requires <strong>Python 3.x</strong>. Most systems include <code>Tkinter</code> by default, but if you encounter an error, follow these steps:</p>
+    
+    <ul>
+        <li><strong>Linux (Ubuntu/Debian):</strong> <code>sudo apt-get install python3-tk</code></li>
+        <li><strong>Windows/macOS:</strong> Included with standard Python installations.</li>
+    </ul>
 
-## Algorithms Included
+    <h3>2. Setup</h3>
+    <pre><code># Clone the repository
+git clone https://github.com/yourusername/search-visualizer.git
 
-| Algorithm              | Optimal | Complete | Uses              | Visual Features                              |
-|------------------------|---------|----------|-------------------|----------------------------------------------|
-| Breadth-First Search   | Yes     | Yes      | Queue             | Broad level-by-level expansion               |
-| Depth-First Search     | No      | No¹      | Stack             | Deep, branching exploration                  |
-| Uniform Cost Search    | Yes     | Yes      | Priority Queue    | Numeric cumulative cost displayed            |
-| Depth-Limited Search   | No      | No       | Recursion + limit | Depth cutoff at 12                           |
-| Iterative Deepening DFS| Yes     | Yes      | Iterative deepening | Gradually deeper attempts                  |
-| Bidirectional Search   | Yes     | Yes      | Two queues        | Simultaneous forward + backward search       |
+# Navigate to the directory
+cd search-visualizer
 
+# (Optional) If you plan to extend this with Pygame:
+pip install pygame</code></pre>
 
-## Features
+    <h2>🏃 How to Run</h2>
+    <p>Simply run the Python script from your terminal or IDE:</p>
+    <pre><code>python main.py</code></pre>
 
-- 10×10 grid with static obstacles
-- Start (green) at (1,1) • Goal (blue) at (8,8)
-- **Yellow** = frontier nodes (in queue/stack)
-- **Light orange** (#ffcc66) = explored/expanded nodes
-- **Purple** = final reconstructed path
-- UCS displays **path cost** on expanded nodes
-- Real-time animation with adjustable `DELAY`
-- Clean sidebar controls: algorithm selection, Run, Clear
-- "Goal not found" message when no path exists
+    <h2>📖 Grid Legend</h2>
+    <table>
+        <tr>
+            <th>Color</th>
+            <th>Meaning</th>
+        </tr>
+        <tr>
+            <td><span style="color: green;">●</span> <strong>Green</strong></td>
+            <td>Start Position</td>
+        </tr>
+        <tr>
+            <td><span style="color: blue;">●</span> <strong>Blue</strong></td>
+            <td>Target Goal</td>
+        </tr>
+        <tr>
+            <td><span style="color: black;">●</span> <strong>Black</strong></td>
+            <td>Static Obstacles (Walls)</td>
+        </tr>
+        <tr>
+            <td><span style="color: #ffd700;">●</span> <strong>Yellow</strong></td>
+            <td>Frontier (Nodes currently in queue/stack)</td>
+        </tr>
+        <tr>
+            <td><span style="color: #ffcc66;">●</span> <strong>Orange</strong></td>
+            <td>Explored Nodes</td>
+        </tr>
+        <tr>
+            <td><span style="color: purple;">●</span> <strong>Purple</strong></td>
+            <td>Final Optimal Path</td>
+        </tr>
+    </table>
 
+    
 
-## Requirements
+    <h2>📝 Algorithms Included</h2>
+    <ul>
+        <li><strong>BFS:</strong> Guarantees the shortest path in unweighted grids.</li>
+        <li><strong>DFS:</strong> Explores as deep as possible; not optimal, but memory efficient.</li>
+        <li><strong>UCS:</strong> Finds the cheapest path based on cell weights.</li>
+        <li><strong>IDDFS:</strong> Combines DFS memory efficiency with BFS optimality.</li>
+        <li><strong>Bidirectional:</strong> Searches from both ends to meet in the middle, significantly reducing the search space.</li>
+    </ul>
 
-- Python **3.8** or newer
-- Tkinter (included in standard Python on Windows/macOS; on Linux: `sudo apt install python3-tk`)
+    <div class="footer">
+        <p>Created for AI Pathfinding Education | 2026</p>
+    </div>
 
-No external pip packages required.
-
-
-## Installation & Quick Start
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/Roay-Abdullah/Uninformed-Search-Visualizer.git
-cd Uninformed-Search-Visualizer
-
-# 2. (Optional) Create & activate virtual environment
-python -m venv venv
-source venv/bin/activate          # Linux/macOS
-venv\Scripts\activate             # Windows
-```
-
-## Grid Configuration
-
-- Size: 10 × 10
-- Start: (1, 1)
-- Goal:  (8, 8)
-- Obstacles:
-  - (2,2) (2,3) (2,4)
-  - (4,4) (4,5)
-  - (5,7) (6,7) (7,7)
+</body>
+</html>
